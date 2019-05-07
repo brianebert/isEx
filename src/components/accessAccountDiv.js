@@ -21,7 +21,7 @@ const _template = function(){
       <div class="innerBox section">
         <input type="checkbox" name="importSecret" id="importSecret" autocomplete="off"${checked}/>
         <label for="importSecret">Import a Stellar account key.</label>
-        <p class="explanation output" id="importInfo">Password protect a key and save here</p>
+        <p class="explanation output" id="importInfo"></p>
         <div class="output">
           Key source: <br/>
           <input type="radio" name="keySource" value="useMine" id="keyMine" autocomplete="off"/>
@@ -119,22 +119,22 @@ class AccessAccount extends Div {
         //context.removeNewKp();
         console.log("import secret was checked");
         context.importSecretChecked = true;
-        document.getElementById("importInfo").textContent = `Please enter a password above, which will be used to encrypt your Stellar
-                                                             secret key.`;
+        //document.getElementById("importInfo").textContent = `Please enter a password above, which will be used to encrypt your Stellar secret key.`;
         for(let node of document.getElementsByName("keySource").values()){
           console.log("enabling node id=" + node.id);
           node.addEventListener("change", context.keySourceChange);
           node.disabled = false
         }
         password.placeholder = "before entering a new oassword, ennter your new secret key below";
-        password.type = 'text';
+        password.type = 'password';
         password.disabled = true;
         password.blur();
+        document.getElementById("passwordExplanation").textContent = 'Once your new secret key has been entered, come back and enter its password.'
       } else {
         console.log("import secret was unchecked");
         context.importSecretChecked = false;
-        document.getElementById("importInfo").textContent = 'Some palceholder to maintain space';
-        document.getElementById("stellarSecret").value = "some more placeholder text";
+        //document.getElementById("importInfo").textContent = 'Some palceholder to maintain space';
+        document.getElementById("stellarSecret").value = "";
         document.getElementById("stellarSecret").disabled = true;
         document.getElementById("stellarSecret").removeEventListener('input', context.stellarSecretChange);
         for(let node of document.getElementsByName("keySource").values()){
@@ -143,10 +143,12 @@ class AccessAccount extends Div {
           node.disabled = true;
           node.checked = false;
         }
-        password.placeholder = "use a strong password";
+        password.value = '';
+        password.placeholder = `enter the password for account ${document.getElementById("accountList").value}`;
         password.type = 'password';
-        password.focus(); 
-        password.disabled = false;       
+        password.disabled = false;
+        password.focus();
+        document.getElementById("passwordExplanation").textContent = `Retreiving your secret key will enable page features.`  
       }
     }
   }
@@ -184,7 +186,12 @@ class AccessAccount extends Div {
       let stellarSecret = document.getElementById("stellarSecret");
       stellarSecret.value = '';
       if(document.getElementById("keyMine").checked){
-        console.log("useMine was checked");        
+        console.log("useMine was checked");
+        let password = document.getElementById("password");
+        password.placeholder = "before entering a new oassword, ennter your new secret key below";
+        password.type = 'password';
+        password.disabled = true;
+        document.getElementById("passwordExplanation").textContent = 'Once your new secret key has been entered, come back and enter its password.'                
         stellarSecret.placeholder = "Enter your Stellar secret key here";
         stellarSecret.addEventListener("input", context.stellarSecretChange);
         stellarSecret.autocomplete = "on";
@@ -196,12 +203,16 @@ class AccessAccount extends Div {
         stellarSecret.removeEventListener("input", context.stellarSecretChange);
         stellarSecret.autocomplete = "off";
         stellarSecret.disabled = true;
-        let newSecret = Keypair.random().secret();
+        let newKp = Keypair.random();
+        let newSecret = newKp.secret();
         document.getElementById("stellarSecret").value = newSecret;
         context.newSecret = newSecret;
         console.log("DEBUG calling focus on pw input");
-        document.getElementById("password").focus();
+        document.getElementById("passwordExplanation").textContent = `You've entered the secret key for account ${newKp.publicKey()}`;
+        document.getElementById("password").value = "";
+        document.getElementById("password").placeholder = `enter a password for account ${newKp.publicKey()}`
         document.getElementById("password").disabled = false;
+        document.getElementById("password").focus();
         //context.onKeyPress();
       }
     }
@@ -218,9 +229,14 @@ class AccessAccount extends Div {
         stellarSecret.autocomplete = "off";
         stellarSecret.blur();        
         context.newSecret = newSecret;
-        console.log("DEBUG calling focus on pw input");
-        document.getElementById("password").focus();
+        let newKp = Keypair.fromSecret(newSecret);
+        document.getElementById("passwordExplanation").textContent = `You've entered the secret key for account ${newKp.publicKey()}`;
+        document.getElementById("password").value = "";
+        document.getElementById("password").placeholder = `enter a password for account ${newKp.publicKey()}`
         document.getElementById("password").disabled = false;
+        document.getElementById("password").focus();
+        console.log("DEBUG calling focus on pw input");
+
         //context.onKeyPress();
       }
     }
@@ -415,6 +431,7 @@ class AccessAccount extends Div {
     console.log("In Stellar Account onLoad");
     document.getElementById("password").type = "password";
     document.getElementById("password").placeholder = `enter password for ${document.getElementById("accountList").value}`;
+    document.getElementById("passwordExplanation").textContent = `Retreiving your secret key will enable page features.`
     document.getElementById("passwordReady").addEventListener("click", this.onSubmit.bind(this));
     document.getElementById("importSecret").addEventListener("change", this.importSecretChange);
     document.getElementById("stellarSecret").disabled = true;

@@ -1,0 +1,5 @@
+    <p class="kvPair test" id="1">Initial Value</p>
+    <input class="submitKV" type="Submit"/>
+    <p class="kvPair test" id="2">Initial Value</p>
+    <p class="kvPair" id="3">Initial Value</p>
+    <script src="test.js" type="text/javascript"></script>

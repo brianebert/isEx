@@ -16,9 +16,7 @@ const _template = function(){
         <label for="password">Password:</label>
         <input type="text" class="wide" name="password" id="password" autocomplete="off" tabindex="1"/>
         <input type="submit" value="Enter" name="passwordReady" id="passwordReady" autocomplete="off" tabindex="3"/>
-        <p class="explanation" id="passwordExplanation">
-          If you've already saved a secret key here, enter the password you used to encrypt it.
-        </p>
+        <p class="explanation" id="passwordExplanation"/>
       </div>
       <div class="innerBox section">
         <input type="checkbox" name="importSecret" id="importSecret" autocomplete="off"${checked}/>
@@ -72,39 +70,6 @@ class AccessAccount extends Div {
     this.keypair = null;
 	}
 
-  get onKeyPress(){
-    const context = this;
-    return function(){
-      console.log("Timers before clearTimeout call");
-      console.log(context.timers);
-      if(context.timers) //  Because the first keypress does not see timers set
-        if (context.timers.pw)
-          window.clearTimeout(context.timers['pw'].id);
-      console.log("Timers after clearTimeout call");
-      console.log(context.timers);
-    }
-  }
-
-  get onKeyRelease(){
-    const context = this;
-    return function(){
-      context.timers = {'pw': {"delay": 2000, "ontimeout": function(e){
-        window.clearTimeout(context.timers['pw'].id);
-        if(context.importSecretChecked){
-          if(StrKey.isValidEd25519SecretSeed(context.newSecret)){
-            context.accountKey = context.newSecret;
-            //document.getElementById("importSecret").checked = false;
-            //context.importSecretChange();
-          }
-        } else {  // not importing new secret key
-          const privateKey = context.accountKey;  //  Decrypt Stellar Key
-          if(StrKey.isValidEd25519SecretSeed(privateKey))
-            context.account = privateKey;  //  Read Account Data
-        }
-      }}};
-    }
-  }
-
   onSubmit(e){
     if(this.importSecretChecked){
       if(StrKey.isValidEd25519SecretSeed(this.newSecret)){
@@ -124,10 +89,17 @@ class AccessAccount extends Div {
 
           this.account = this.publicKey;  //  Read Account Data
           document.getElementById("passwordExplanation").textContent = `Thank you!  Secret key for ${this.publicKey} found.`;
+          document.getElementById("password").value = '';
+          document.getElementById("password").placeholder = "Success";
         }
         else{
           console.log(`value of privateKey is ${privateKey}`);
+          document.getElementById("password").value = '';
+          document.getElementById("password").placeholder = `enter password for ${document.getElementById("accountList").value}`;
           document.getElementById("passwordExplanation").textContent = `sorry, but the key recovered is invalid.  please try another credential.`;
+          window.setTimeout(function (){
+            document.getElementById("password").focus();
+          }, 0); 
         }
       }.bind(this))
       .catch(function(err){
@@ -258,6 +230,11 @@ class AccessAccount extends Div {
     this._keypair = kp;
     try{
       document.getElementById("password").value = "";
+      document.getElementById("password").placeholder = `enter password for ${document.getElementById("accountList").value}`;
+      document.getElementById("passwordExplanation").textContent = "If you've already saved a secret key here, enter the password you used to encrypt it.";
+      window.setTimeout(function (){
+        document.getElementById("password").focus();
+      }, 0);       
     } catch { 
       console.log("accountAccess initialized keypair to null.");
     }

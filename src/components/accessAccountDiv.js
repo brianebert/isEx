@@ -73,7 +73,9 @@ class AccessAccount extends Div {
   onSubmit(e){
     if(this.importSecretChecked){
       if(StrKey.isValidEd25519SecretSeed(this.newSecret)){
-        this.accountKey = this.newSecret;
+        document.getElementById("passwordExplanation").textContent = `Registering your new credential, thank you.`;
+        let kp = Keypair.fromSecret(this.newSecret);
+        this.accountKey = {"account": kp.publicKey(), "password": document.getElementById("password").value, "secret": kp.secret()};
         document.getElementById("importSecret").checked = false;
         this.importSecretChange();
       }
@@ -316,18 +318,23 @@ class AccessAccount extends Div {
     return balances
   }
 
-  set accountKey(key){
+  set accountKey(credentials){
+    let pw = credentials.password;
+    let acc = credentials.account;
+    let key = credentials.secret;
     //this._account = {"id":`${Keypair.fromSecret(key).publicKey()}`};
     return this.accountKey()
         .then(function(result){
-          if(result){
+          if(result){ // ADD TO THIS BLOCK TO FEEDBACK TO UI
             console.log(`set accountKey(key) is returning ${result} without creating new key/password node`);
+            document.getElementById("passwordExplanation").textContent = `That credential was already registered, thank you.`;
+            document.getElementById("password").value = "";
+            document.getElementById("password").placeholder = `enter a password for account ${document.getElementById("accountList").value}`
+            document.getElementById("password").disabled = false;
+            document.getElementById("password").focus();
             return result
           } else {
               console.log("no key/password node found, so making one.");
-              let el = document.getElementById("password");
-              let pw = el.value;
-              let acc = document.getElementById("accountList").value;
 
               console.log("encrypt attempt with pw: " + pw + " for account " + acc);
               let bitArray = sjcl.hash.sha256.hash(pw + acc);  
@@ -355,6 +362,16 @@ class AccessAccount extends Div {
                   .then(function(pinResponse){
                     console.log("credentials pinned: \n" + pinResponse);
                     this.newSecret = document.getElementById("stellarSecret").value = null;
+
+                    document.getElementById("passwordExplanation").textContent = `Your new credential has been registered, thank you.`;
+                    document.getElementById("password").value = "";
+                    document.getElementById("password").placeholder = `enter a password for account ${document.getElementById("accountList").value}`
+
+                    document.getElementById("val").value = acc;
+                    document.getElementById("key").value = '';
+                    document.getElementById("key").placeholder = `Name your new keypair.`
+                    document.getElementById("key").focus();
+
                     return key
                   }.bind(this))
                   .catch(function(err){

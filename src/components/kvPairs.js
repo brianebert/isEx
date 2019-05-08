@@ -42,16 +42,17 @@ class KVPairList extends Div {
   kvPairListInit(){
     document.getElementById("setKVPairStatus").textContent = '';
     let account = document.getElementById("accountList").value;
-    this.eventSource = account;
+    let table = document.getElementById("kvTable");
+    document.getElementById("kvPairListExplanation").textContent = '';
+    for(let i = table.children.length - 1; i > 0; i--){
+      table.removeChild(table.children[i]);
+    }
     xhrp({"url": `https://horizon.stellar.org/accounts/${account}`})
     .then(function(account){
-      let data = JSON.parse(account).data;
+      let acc = JSON.parse(account)
+      let data = acc.data;
       console.log("got account data and pairs are:");
       console.log(data);
-      let table = document.getElementById("kvTable");
-      for(let i = table.children.length - 1; i > 0; i--){
-        table.removeChild(table.children[i]);
-      }
       for(let key in data){
         let val = Buffer.from(data[key], 'base64').toString();
         let newRow = document.createElement('tr');
@@ -110,11 +111,19 @@ class KVPairList extends Div {
 
         }
 
-      }     
-    })
+      }
+      document.getElementById("kvTable").style.display = "block"
+      this.eventSource = acc.id;
+    }.bind(this))
     .catch(function(err){
       console.log("error populating kv list:");
       console.log(err);
+      if(err.status === 404){
+        document.getElementById("kvTable").style.display = "none"
+        document.getElementById("kvPairListExplanation").textContent = `fund Stellar account ${document.getElementById("accountList").value} to post data on it.`;
+      } else {
+        document.getElementById("kvPairListExplanation").textContent = "unforseen error, see console.";
+      }
     })
   }
 
@@ -220,6 +229,7 @@ get kvPairSubmit(){
         .catch(function(err){
           console.log('error adding managed data: ');
           console.log(err);
+          document.getElementById("setKVPairStatus").textContent = "Sorry, there was a network error.  Please try again.";
         })
       } else {
         document.getElementById("setKVPairStatus").textContent = "You must have the secret key of a valid account, or its password, to set a key:value pair"
@@ -250,6 +260,7 @@ const _template = function(){
         <select id="accountList">
           <option value="GDLLWRJCV3TGRRB4CVBCH34IQJO52JYBCKEMWSRLMA7SE4PK22QKKDXW">genesis account</option>
         </select>
+        <p class="explanation" id="kvPairListExplanation"/>
         <table id="kvTable">
           <tr><th>Key</th><th></th><th>Value</th></tr>
         </table>

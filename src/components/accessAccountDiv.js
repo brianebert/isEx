@@ -253,7 +253,7 @@ class AccessAccount extends Div {
     this._keypair = kp;
     try{
       document.getElementById("password").value = "";
-      document.getElementById("password").placeholder = `enter password for ${document.getElementById("accountList").value}`;
+      document.getElementById("password").placeholder = `enter password for ${this.selectedAccountName()}`;
       document.getElementById("passwordExplanation").textContent = "If you've already saved a secret key here, enter the password you used to encrypt it.";
       window.setTimeout(function (){
         document.getElementById("password").focus();

@@ -342,16 +342,20 @@ class Uploader extends Div {
       popup.result()
       .then(function(obj){
         console.log(`popup promise resolved to ${JSON.stringify(obj)}`);
-        popup.closeWindow();
+        
         credentials = obj;
-        if(credentials.hasOwnProperty("password") && credentials.hasOwnProperty("account")){ // Got a credential         
+        if(credentials.hasOwnProperty("password") && credentials.hasOwnProperty("account")){ // Got a credential
+          popup.message = "thank you, we're checking the credentials you entered";   
           return accessAccount.accountKey(credentials)
-        }else
+        }else {
+          popup.closeWindow();
           return Promise.reject(new Error(`{"type": "CANCEL", comment": "user canceled sign transaction"}`));
+        }
       })
       .then(function(key){
         console.log(`accessAccount.accountKey(obj) returned ${key}`);
         if(key){
+          popup.message = `found secret key for account ${credentials.account}`;
           credentials["key"] = key;
           let price = this.price;
           let stellarServer = new Stellar.Server('https://horizon.stellar.org');
@@ -380,13 +384,15 @@ class Uploader extends Div {
         }
       }.bind(this))
       .then(function(result){
+        document.querySelector(".upProgress").innerHTML = `<strong>Thank you! your upload has been pinned with Stelllar ` + 
+                                                          `transaction hash <code>${result.hash}</code>.</strong>`;
         console.log(`pin transaction result is: ${result.hash}`);
-        workingDate = Date.now().toString();
+        workingDate = new Date();
         const receipt = {"Stellar transaction hash": `${result.hash}`,                       
                           "paid": `${document.getElementById("pinCost").textContent}`,
                           "to pin ipfs cid": `${document.querySelector(".upStart").getElementsByTagName("a")[0].text}`,
                           "for this many days": `${document.getElementById("daysSelected").value}`,
-                          "at": workingDate};
+                          "at": `${workingDate.toGMTString()}`};
         console.log(`pin receipt is: ${JSON.stringify(receipt)}`);
         console.log(receipt);
         let blob = new Blob([JSON.stringify(receipt)], {"type": "text/plain"});
@@ -395,35 +401,30 @@ class Uploader extends Div {
         return xhrp({"verb": "post", "url": "https://motia.com/api/ipfs/upload", "body": formD})     
       })
       .then(function(address){
+        popup.closeWindow();
         console.log(`receipt uploaded to ${address}`);
-        let kp = accessAccount.keypair;
-        console.log(`type of accessAccount.keypair is: ${typeof kp}`);
-        if(kp.canSign){
-          let dataName = address
-          let stellarServer = new Stellar.Server('https://horizon.stellar.org');
-          return  stellarServer.loadAccount(credentials.account)
-                                .then(function(sourceAccount) {
-                                  var transaction = new Stellar.TransactionBuilder(sourceAccount)
-                                    .addOperation(Stellar.Operation.manageData({"name": `${workingDate}.rcpt`,
-                                                                                "value": dataName}))
-                                    .build();
-                                  transaction.sign(Stellar.Keypair.fromSecret(credentials.key));
-                                  console.log(`sumitting manageData account ${kp.publicKey()} signed by ${kp.secret()} with name=${workingDate}.rcpt and value=${dataName}`);
-                                  return stellarServer.submitTransaction(transaction);
-                                })
-                                /*.then(function(result){
-                                  console.log(`data set on account: ${kp.publicKey()} with result ${result}`);
-                                  console.log(result);
-                                  return result
-                                })*/
-                                .catch(function(err){
-                                  console.log("Error setting data to Stellar:");
-                                  console.log(err);
-                                  throw new Error(`{"type": "STELLAR ERROR", "error": "${JSON.stringify(err)}", "comment": "look in extras"}`)
-                                })       
-        } else {
-          return Promose.reject(new Error(`{"type": "BAD CRED", "credentials": "${credentials.account}", "comment": "no open account to post receipt to"}`))
-        }
+        let stellarServer = new Stellar.Server('https://horizon.stellar.org');
+        return  stellarServer.loadAccount(credentials.account)
+                              .then(function(sourceAccount) {
+                                var transaction = new Stellar.TransactionBuilder(sourceAccount)
+                                  .addOperation(Stellar.Operation.manageData({"name": `${workingDate.valueOf().toString()}.rcpt`,
+                                                                              "value": address}))
+                                  .build();
+                                transaction.sign(Stellar.Keypair.fromSecret(credentials.key));
+                                console.log(`sumitting manageData account ${credentials.account} signed by ${credentials.key} with name=${workingDate}.rcpt and value=${address}`);
+                                return stellarServer.submitTransaction(transaction);
+                              })
+                              /*.then(function(result){
+                                console.log(`data set on account: ${kp.publicKey()} with result ${result}`);
+                                console.log(result);
+                                return result
+                              })*/
+                              .catch(function(err){
+                                console.log("Error setting data to Stellar:");
+                                console.log(err);
+                                throw new Error(`{"type": "STELLAR ERROR", "error": "${JSON.stringify(err)}", "comment": "look in extras"}`)
+                              })       
+
       })
       .then(function(result){
         console.log("Posted data pair for receipt and result is:");
@@ -432,10 +433,25 @@ class Uploader extends Div {
       .catch(function(err){
         console.log("uploader.pinIt() caugth error:");
         console.log(err);
-        if(err.hasOwnProperty("type")){
-          console.log("Bubble this error intelligently.")
+        try{
+          let m = JSON.parse(err.message);
+          if(m.hasOwnProperty("type")){
+            if(m.type === 'BAD CRED'){
+              popup.closeWindow();
+              let savedHTML = document.querySelector(".upProgress").innerHTML;
+              document.querySelector(".upProgress").innerHTML = `<strong>Bad credentials submitted.  Please start over.</strong>`;
+              setTimeout(function(){
+                document.querySelector(".upProgress").innerHTML = savedHTML;
+                document.querySelector(".upProgress").firstChild.focus();
+                document.getElementById("pinSubmit").addEventListener("click", this.pinIt);
+                console.log("fuck");
+              }, 2000);
+            }
+          }
+        } catch{
+          console.log("some error responding to my own error message");
         }
-      });
+      }.bind(this));
     }.bind(this)
   }
 

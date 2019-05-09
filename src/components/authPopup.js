@@ -7,9 +7,7 @@ const _template = function(){
 			<label for="password">Password for:</label><select id="accountList"/>
       <input type="password" class="wide" name="password" id="password" autocomplete="off" tabindex="1"/>
       <input type="submit" value="Enter" result="Enter" id="passwordReady" onclick="return CloseMySelf(this);" autocomplete="off" tabindex="3"/>
-      <p class="explanation">
-        Enter the password you used to save the secret key for.
-      </p>
+      <p class="explanation" id="popupExplanation"/>
       <a href="#" result="cancel" onclick="return CloseMySelf(this);">Cancel Sign Transaction</a>
 	  </div>
 		`;
@@ -25,10 +23,14 @@ class Popup extends Div{
 				resolve(obj);
 			};
 			window.handlePopupError = reject;
-			this.me = window.open("", "authorize", "width=1000,height=500,titlebar=no");
+			this.me = window.open("", "authorize", "width=1000,height=200,titlebar=no");
 			this.me.document.write('');
 			this.me.document.write(`<title>client Sign Transaction</title><link rel="stylesheet" type="text/css" href="example.css"/>` + this.html);
 			this.me.document.getElementById("accountList").innerHTML = copies.innerHTML;
+			this.me.document.getElementById("accountList").addEventListener("change", this.accountChange);
+			this.me.document.getElementById("popupExplanation").textContent = `You may choose a different account from which to pay the pin fee.`
+			this.me.document.getElementById("password").placeholder = `Enter password for account ${this.me.document.getElementById("accountList").value}`;
+			this.me.document.getElementById("password").focus(); 
 			this.me.document.write(`<script>${this.closePopup}</script>`);
 			console.log("popped up window");
 		}.bind(this));
@@ -41,6 +43,9 @@ class Popup extends Div{
 	get me(){
 		return this._me
 	}
+	set message(m){
+		this.me.document.getElementById("popupExplanation").textContent = m;
+	}
 	set result(r){
 		this._result = r;
 	}
@@ -48,6 +53,13 @@ class Popup extends Div{
 		return function(){
 			return this._result
 		}
+	}
+
+	get accountChange(){
+		return function(){
+			this.me.document.getElementById("password").value = "";
+			this.me.document.getElementById("password").placeholder = `Enter password for account ${this.me.document.getElementById("accountList").value}`;
+		} 
 	}
 
 	closeWindow(){

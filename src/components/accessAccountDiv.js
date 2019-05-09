@@ -181,6 +181,11 @@ class AccessAccount extends Div {
     return null;
   }
 
+  selectedAccountName(){
+    let el = document.getElementById("accountList");
+    return el.options[el.selectedIndex].textContent
+  }
+
   get keySourceChange(){
     let context = this;
     return function(e){

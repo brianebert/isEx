@@ -4,40 +4,43 @@ import {Div} from '../common/Div.js';
 
 const welcome = new Page([new Section([new Div(`
 		<p>
-			Welcome to my non-corner of a new interweb.  I hope you have fun here, stay a while in this
-			new space, and help figure out how we should connect with each other here.  What are the 
-			politics in an untrammeleed region?
+			Hi, I'm Brian.  Out of concern for global warming I'm a pirate now.  I used to be a pig.  
+			I'll keep all this personal stuff short.  I might add more later, so don't get too comfortable.
 		</p>
 		<p>
-			Do we share our information?  Do we conduct commerce?  Who are we?
+			You're reading this page out of <a href="http://ipfs.io" target="_blank">ipfs</a>.  They can tell you
+			about themselves better than I can, amd I hope you'll browse their sites.  This page owes 
+			a lot to their video, which influenced how and how often I question myself about what I do.  
+			When you add a file to ipfs that data 
+			is assigned a unique address derived from its content.  Any ipfs node can read the file added 
+			by requesting the contents of the ipfs address.  Any change to the content and the address 
+			changes.
 		</p>
 		<p>
-			I have some tools here for you to explore a distrubuted file system, ipfs.  You can use the
-			gateway at https://motia.com/ipfs, or find files through ipfs.io.  That includes this
-			site, which is available at any ipfs gateway.
+			I only use a small portion of the of ipfs api.  One notable part of ipfs I don't use is the 
+			name system, ipns.  I read early on that the ipns implementation was experiencing problems, and I 
+			already knew how to post key/value pairs on the <a href="https://stellar.org" target="_blank">stellar</a> 
+			blockchain.  Stellar closes blocks in seconds, so I used stellar data entires to
+			relate human readable names with addresses of both ipfs content and stellar accounts.  
+			My mashup creates an indelible record of immutable data, without restriction on size.  You can write 
+			any file into ipfs and associate its unique address with something human friendly by writing 
+			a phrase and its associated address into the stellar blockchain.
 		</p>
 		<p>
-			The reason sites or other content can be served out of multiple domains, is that all of the
-			files in ipfs are addressed by content, rather than by location.  That's what makes this my
-			non-corner of the web.  IPFS files are found by readiung the hash code of its content.  The
-			number looks different, but it's even harder for humans than an ip address.
+			You can load files into ipfs on my <a href="${document.location.href}/demo/" target="_blank">demo</a> page.  
+			Once you load your files, they can be seen by anyone, anywhere.  That's a feature, but you might 
+			want to keep your content private.  If so, you can encrypt them during upload, using the 
+			Stanford Javascript Crypto Library <a href="${document.location.href}/sjclDemo" target="_blank">sjcl</a>.  The sjcl 
+			demo page can be used to decrypt your uploaded files to verify their content.
 		</p>
 		<p>
-			IPFS also has a name service, ipns, but people seemed to struggle with it and it was something
-			else to learn.  I'm familiar with the blockchain run by Stellar, so I use a feature which allows
-			users to attach key:value pairs to a Stellar account.  You can pair an ipfs address to a human
-			readable name that way, as well as a lot of other stuff.
+			Stellar keypairs can sign any upload you make.  You can post any identity document you wish in the 
+			associated account, linking that identity indelibly with the account's public key.  The stellar keypair 
+			signs the plaintext of any file encrypted at upload.  Your signature can be affixed to any document youi
+			upload and the signature related to whatever means you choose to identify yourself.
 		</p>
 		<p>
-			Among other things users can do with a Stellar account is to use its private key to sign
-			documents.  Signiung things is one way of saying who we are.  We can find anonymity on line,
-			but we can also forge identity, with or without external authority.  We can free ourselves to
-			choose the authorities we accept and we can create those authorities.
-		</p>
-		<p>
-			This introduction began with an invitation.  "A lot of other stuff" is mostly stuff I won't
-			think of on my own.  I hope you'll start defining some of that "other stuff," with what you do
-			"here."  Have fun.
+			
 		</p>
 	`)], "welcome")]);
 

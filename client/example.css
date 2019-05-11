@@ -4,13 +4,6 @@
   font-family: Arial, Helvetica, FreeSans, sans;
 }
 
-h1 {
-  text-align: center;
-  padding: 5px;
-  margin-bottom: 0.6em;
-  font-size: 1.5em;
-}
-
 .header {
   width: 650px;
   margin: 0px auto 1em;
@@ -77,6 +70,15 @@ textarea+*, .wide+* {
   -webkit-border-radius: 7px;
 }
 
+p.storyTelling {
+  width: 80%;
+  padding: 7px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size:20px;
+  margin-left: 10%;
+  margin-bottom: 20px;  
+}
+
 #col2 { position: absolute; left: 480px; }
 
 .floatright {
@@ -90,6 +92,12 @@ a {
 
 a.random, #buttons a { text-decoration: none; }
 a.random:hover, a.random:focus { text-decoration: underline; }
+
+h1 {
+  text-align: center;
+  font-size: 40px;
+  margin-top:5%;
+}
 
 h2 {
   margin: -7px -7px 3px -7px;

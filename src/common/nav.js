@@ -3,9 +3,15 @@ const CID = require('cids');
 import {Section} from './Section.js';
 import {Div} from './Div.js';
 
+const _template = function(){
+	return ``
+};
+
 class Navigator extends Div {
 	constructor(routes){
-		super('placeHolder text');
+		super({ "html": _template,
+            "class": "box",
+            "id": "navBar"});
 		this.routes = routes;
 	}
 
@@ -22,9 +28,10 @@ class Navigator extends Div {
 		this._routes = {};
 		var html = `<nav>`;		
 		for(let route in routes){
-			let anchorLabel = 
-			this._routes[rootPathString + route.substring(1, route.length)] = routes[route];
-			html += `<a href="` + route + `">${route}</a> | `;
+			//let anchorLabel = this._routes[rootPathString + route.substring(1, route.length)] = routes[route];
+			this._routes[rootPathString + route.substring(1, route.length)] = routes[route]; // create router entry
+			//html += `<a href="` + route + `">${route === '/' ? "Home" : route}</a> | `; // create corresponding menu entry
+			html += `<a href="` + route + `">${route === '/' ? "Home" : route.substring(1, route.length)}</a> | `; // create corresponding menu entry
 		}
 		html = html.substring(0, html.length -3) + `</nav>`;
 		this.html = function(){return html};
@@ -47,7 +54,10 @@ class Navigator extends Div {
 	onLoad(){
 		console.log("In navigator onLoad()");
 		document.querySelector("nav").addEventListener("click", this.onNavClick);
-
+		Array.prototype.forEach.call(document.querySelectorAll(".menuItem"), function(el){
+			el.addEventListener("click", this.onNavClick);
+		}.bind(this));
+		
 		window.onpopstate = this.onPopState;
 	}
 
@@ -55,6 +65,8 @@ class Navigator extends Div {
 		const context = this;
 		return function(event){
 		  event.preventDefault();  // prevent navigating to file at location
+		  console.log("Handling navigation event: ");
+		  console.log(event);
 
 		  //  reassemble the path name, including the site hash
 

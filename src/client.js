@@ -1,5 +1,8 @@
 import {welcome} from './components/welcome.js';
-import {ipfsHere} from './components/ipfsHere.js';
+import {whyStellar} from './components/whyStellar.js';
+import {whyIPFS} from './components/whyIPFS.js';
+import {mashedUp} from './components/mashedUp.js';
+import {rePirates} from './components/rePirates.js';
 //import {TestTwo} from './components/TestTwo.js';
 //import {uploader} from './components/ipfsUpload.js'
 //import {kvPairList} from './components/kvPairs.js';
@@ -11,7 +14,11 @@ import {LocalNode} from './common/ipfs.js';
 
 const site_cfg = {
   "/": welcome,
-  "/ipfsHere": ipfsHere/*,
+  "/whyStellar": whyStellar,
+  "/whyIPFS": whyIPFS,
+  "/mashedUp": mashedUp,
+  "/rePirates": rePirates
+  /*,
   "/NestTwo": TestTwo,
   "/ipfsUpload": uploader,
   "/kvPairs": kvPairList,

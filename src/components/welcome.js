@@ -22,8 +22,7 @@ const welcome = new Page([new Section([new Div(`
 				that.  Milling around before the start I met one of the panelists, Joyce, who had arrived with a guy named 
 				Jed.  She spoke about applying consensus to transactions in arbitrary assets within seconds and without 
 				proof of work.  She spoke of savings and useful financial products for people currently constrained to growing 
-				their assets on four feet.  I started playing around with Stellar.  When I needed help the people were helpful 
-				and nice.
+				their assets on four feet.  I started playing around with Stellar.  When I needed help the people were nice.
 			</p>
 			<p class="storyTelling">
 				My exposure to Stellar leads me to understand keeping distributed databases from partition is no simple 
@@ -32,7 +31,7 @@ const welcome = new Page([new Section([new Div(`
 				documents.  Stellar provides a space for account holders to write key:value pairs large enough 
 				for Stellar or IPFS addresses.  While IPFS documents are not “written into the blockchain” as I hear people 
 				say often, authenticity can be recorded for a hash, signed legal work collateralizing a 
-				new token, this website, pretty much whatever you can think of.  An intrinsic symbiosis between accounting 
+				new token, this website, identity, pretty much whatever you can think of.  An intrinsic symbiosis between accounting 
 				and document systems led me here.
 			</p>
     </div>

@@ -4,16 +4,16 @@ import {Div} from '../common/Div.js';
 
 const whyStellar = new Page([new Section([new Div(`
 	<p class="storyTelling">
-		Blockchain consensus falls into three basic categories: proof of work, proof of stake and 
-		voting.  I’m not qualified to comment on the subtleties of consensus algorithms, but at a 
-		superficial level, proof of work algorithms deliver the best abstraction of trust.  While 
+		There are ~1000 public blockchains and nearly as many variations on consensus algorithms.  They 
+		fall into three basic categories: proof of work, proof of stake and 
+		voting.  Proof of work algorithms deliver the best abstraction of trust.  While 
 		that appeals to me a lot, it is not resource friendly and blocks take a long time to 
-		close.  I’m even less qualified to comment on proof of stake, but hasn’t anyone manipulated 
-		the price of a commodity in order to corner a market?  Without ability to opine, I’ll wait 
-		and see.
+		close.  Proof of stake resolves some delay and resource problems, but hasn’t anyone manipulated 
+		the price of a commodity in order to corner a market?  I’ll wait 
+		and see how proof of stake evolves over time.
 	</p>
 	<p class="storyTelling">
-		Which brings us to voting.  Voting is fast, Stellar consensus time is similar to 
+		Which brings us to voting.  Voting is fast: Stellar consensus time is similar to 
 		processing a credit card transaction. Stellar runs a consensus protocol that has been proven by a security 
 		researcher, David Mazieres, who is qualified to comment on these things.  It is not so much 
 		an abstraction of trust as a distribution of it.  Stellar’s version requires knowing the 
@@ -57,8 +57,8 @@ const whyStellar = new Page([new Section([new Div(`
 		such as that pointed to by the data pair being added.
 	</p>
 	<p class="storyTelling">
-		Stellar validation recently went down for a couple of hours.  Conclusions published claim t
-		he outage proof that Stellar is centralized.  Intuitively it seems the larger one’s consensus 
+		Stellar validation recently went down for a couple of hours.  Conclusions published claim 
+		the outage proof Stellar is centralized.  Intuitively it seems the larger one’s consensus 
 		group, the less likely the loss of servers will halt activity.  Uptake of Stellar, and growth 
 		of mutual trust among users may be needed to prevent this type of outage.  It may also be the 
 		case that the quorum of trustworthy users required to object to consensus should be smaller 

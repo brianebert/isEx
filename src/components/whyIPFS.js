@@ -4,6 +4,11 @@ import {Div} from '../common/Div.js';
 
 const whyIPFS = new Page([new Section([new Div(`
 	<p class="storyTelling">
+		If you’ve read this far and haven’t watched this video before, this might be a good time for a break: 
+		<a href="http://longnow.org/seminars/02018/aug/06/long-term-info-structure/" 
+		target="_blank">Juan Benet at The Long Now Foundatio</a>
+	</p>
+	<p class="storyTelling">
 		IPFS is part of an ambitious project touching many requirements of distributed storage, 
 		from content addressing to crypto mining with constructive proof of work to pay for 
 		the physical storage itself.  I touched as 
@@ -39,9 +44,7 @@ const whyIPFS = new Page([new Section([new Div(`
 		up and maintaining database replicas.
 	</p>
 	<p class="storyTelling">
-		Please read more about <a href="http://ipfs.io" target="_blank">IPFS</a>, and don't 
-		miss <a href="http://longnow.org/seminars/02018/aug/06/long-term-info-structure/" 
-		target="_blank">Juan Benet at The Long Now Foundatio</a>.
+		Please read more about <a href="http://ipfs.io" target="_blank">IPFS</a>.
   </p>
 `)], "why IPFS?")]);
 

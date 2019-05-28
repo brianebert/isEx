@@ -6,8 +6,7 @@ const rePirates = new Page([new Section([new Div(`
 	<p class="storyTelling">
 		In “The Republic of Pirates” Collin Woodard describes democracy with universal 
 		suffrage.  Spoils of a raid were divided evenly among the participants, the man 
-		elected captain getting two shares.  How many shares are you getting, and how 
-		many shares are your leaders getting?  Can they hear you?
+		elected captain getting two shares.  I like the inclusive simplicity.
 	</p>
 	<p class="storyTelling">
 		Also, as you can see from this graph, there is a statistically significant 
@@ -15,7 +14,7 @@ const rePirates = new Page([new Section([new Div(`
 	</p>
 	<img src="./PiratesVsTemp.png" style="display:block;margin-left:auto;margin-right:auto;width:50%;margin-bottom:20px">	
 	<p class="storyTelling">
-		Rather than do nothing about climate change, I'll be a pirate.  If you missed my 
+		I'm trying to do positive things, like cultivating my inner Pirate.  If you missed my 
 		demo, it's linked on the "mashedUp" page.  Yargh…
   </p>	
 `)], "regarding Pirates")]);

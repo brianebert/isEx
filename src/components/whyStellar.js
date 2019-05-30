@@ -4,57 +4,65 @@ import {Div} from '../common/Div.js';
 
 const whyStellar = new Page([new Section([new Div(`
 	<p class="storyTelling">
-		There are ~1000 public blockchains and nearly as many variations on consensus algorithms.  They 
-		fall into three basic categories: proof of work, proof of stake and 
-		voting.  Proof of work algorithms deliver the best abstraction of trust.  While 
-		that appeals to me a lot, it is not resource friendly and blocks take a long time to 
-		close.  Proof of stake resolves some delay and resource problems, but hasn’t anyone manipulated 
-		the price of a commodity in order to corner a market?  I’ll wait 
-		and see how proof of stake evolves over time.
+		All those ledger copies are kept in agreement by offering competitive incentive to 
+		write a page of accounts indelibly.  If someone wants to go back in time and make a 
+		change they will need to do a computationally impossible amount of work to catch 
+		up their illicit change to the current state of the ledger.  The system of 
+		account agreement, <em>consensus</em>, and the record of accounts, the <em>blockchain</em>, have 
+		been operating over ten years, with <em>mining</em> incentives available to those who 
+		prove work done.  Bitcoin’s market cap today is over USD$150B.  The 
+		fact a ten year old public system can store that much value speaks for its 
+		integrity.
 	</p>
 	<p class="storyTelling">
-		Which brings us to voting.  Voting is fast: Stellar consensus time is similar to 
-		processing a credit card transaction. Stellar runs a consensus protocol that has been proven by a security 
-		researcher, David Mazieres, who is qualified to comment on these things.  It is not so much 
-		an abstraction of trust as a distribution of it.  Stellar’s version requires knowing the 
-		identity of consensus partners.  It’s a trust hybrid.  While I’d prefer abstracting trust, 
-		distributing it may be more palatable to those who hold it closely today.  A day may soon 
-		arrive when useful work is proved by miners.
+		Since the introduction of Bitcoin in 2008, on the order of 1000 different 
+		blockchains have appeared.  Out of a wide variety, most of their consensus systems 
+		fall into a mix of three categories, proof of work, proof of stake and voting.  Proof 
+		of work algorithms can deliver a pure abstraction of trust, but Bitcoin spends an 
+		intolerable amount of electricity to operate and confidence in outcome can take an 
+		hour.  Ethereum is leaving its faster proof of work for proof of stake, another 
+		general consensus category.  Stakeholders have manipulated markets before, so I guess 
+		we’re going to see.
 	</p>
 	<p class="storyTelling">
-		IPFS’s collateral project, Filecoin, mines using storage as work in its consensus 
-		algorithm.  Consider the various resources used in computing and networking amenable to 
-		packaging as work in coin consensus.  Computation, networking, value added products and 
-		services like you see at aws.  All these might prove useful work to mine coins into existence.
+		Which brings us to voting.  Consensus voting is fast, very similar to the time 
+		it takes to process a credit card transaction. Stellar runs a version that has been 
+		proven by a well known security researcher.  Stellar’s voting protocol requires 
+		knowing the identity of consensus partners.  It is not so much an abstraction of 
+		trust as a distribution of it.    Distributing trust may be more palatable to those 
+		who hold it closely today than abstracting trust out of their hands. 
 	</p>
 	<p class="storyTelling">
-		Until then however we have paradigms of proof of work, like Bitcoin, soon to be proof of stake, 
-		Ethereum, and voting, Stellar.  Almost as important as the consensus mechanism but not 
-		as often discussed is the application of consensus.  When your latest favorite ERC-20 coin 
-		changes hands, who does the debit/credit?  Is it the blockchain or is it the contract 
-		running on it?  Stellar consensus looks at every payment.
+		A day may soon arrive when useful work is proved by miners quickly.  Consensus 
+		will evolve, including replacement of Bitcoin'so hash searches with useful 
+		work.  Consider the various resources used in computing and 
+		networking packaged as work proved.  Mining of coins 
+		for all networked activities seems a reasonable goal.   Choice of consensus 
+		type can change, as we see from Ethereum.  There is more to consider when choosing 
+		a blockchain.
 	</p>
 	<p class="storyTelling">
-		Stellar permits issue of coins to recipients trust the coin:issuer pair.  Sending a coin 
-		payment from the issuer to a trusting account creates the coin.  Sending it back to the 
-		issuer destroys it.  Examples of how to issue coins from a pair of accounts to protect 
-		issuers are shown on Stellar’s site.  Issuers can also demand to authorize any trusting 
-		account, and optionally configure trust authorization revokable.  Stellar checks all of 
-		these things before a relevant debit/credit transaction.
+		Even more important than type of consensus, is the manner it is applied by the 
+		blockchain.  Coins issued on Stellar all have their debit/credit operations verified 
+		by the blockchain’s consensus.  No code needs to be written nor audited to issue 
+		and trade coins on Stellar.  They trade under consensus on a distributed 
+		marketplace.  Complete charts of accounts can be built on Stellar, with consensus 
+		verified rules regarding what assets can be held in which accounts.  Trading partners 
+		can share books without need to audit.
 	</p>
 	<p class="storyTelling">
-		Stellar transactions can consist of many operations and execute atomically.  If one 
+		Stellar transactions can include many operations which execute atomically.  If one 
 		operation fails the transaction is rolled back.  This feature is one component of smart 
 		contracts on Stellar, which when combined by manipulation of dates and transaction 
 		sequence rules, provide smart contract building blocks which execute verified by 
 		the blockchain’s consensus.
 	</p>
 	<p class="storyTelling">
-		Stellar’s consensus does not look at the key:value pairs added to accounts, but the 
+		Stellar’s consensus does not look at the key:value data entries added to accounts, but the 
 		pairs are put there in a transaction, so the transaction needs to be signed.  Stellar 
-		accounts can be configured with a large set of weighted keys from which elaborate decision 
-		systems can be automated, particularly when associated with authenticated documentation 
-		such as that pointed to by the data pair being added.
+		accounts can be configured with a large set of weighted signatures from which flexible decision 
+		systems can be automated, particularly when associated with documentation 
+		pointed to by an IPFS address.
 	</p>
 	<p class="storyTelling">
 		Stellar validation recently went down for a couple of hours.  Conclusions published claim 
@@ -62,7 +70,7 @@ const whyStellar = new Page([new Section([new Div(`
 		group, the less likely the loss of servers will halt activity.  Uptake of Stellar, and growth 
 		of mutual trust among users may be needed to prevent this type of outage.  It may also be the 
 		case that the quorum of trustworthy users required to object to consensus should be smaller 
-		than the quorum required to agree.  Again, others are more qualified and I look forward to hearing 
+		than the quorum required to agree.  I look forward to hearing 
 		more from Stellar.
 	</p>
 	<p class="storyTelling">

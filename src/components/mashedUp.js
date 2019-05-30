@@ -6,9 +6,9 @@ import {Div} from '../common/Div.js';
 const template = `
 	<p class="storyTelling">
 		The demo page shows distributed document storage with indelible anti-tampering, and 
-		consensus verified voting whether or not to write data’s hash into a blockchain.  Document 
+		consensus verified voting.  Document 
 		encryption and signing are provided.  Encrypting a file automatically uploads a signature 
-		of the plaintext.  Peer to peer messaging with privacy and authentication controled by the peers can be played 
+		of the plaintext.  Peer to peer messaging with privacy and authentication can be played 
 		with.  Keys are stored encrypted in IPFS, accessible by password<sup style="font-size:16px">1</sup>.
 	</p>
 	<p class="storyTelling">
@@ -26,7 +26,8 @@ const template = `
 		key you store here could be encrypted harder and perhaps someday will be.  For now, storing 
 		it where it can be recovered via any IPFS gateway is the point.  Although a keypair is 
 		necessary to encrypt and sign, upload encryption is done with the key’s password, to make it 
-		easier to read decrypted text in the SJCL demo.
+		easier to read decrypted text in the <a href="https://bitwiseshiftleft.github.io/sjcl/demo/" 
+		target="_blank">SJCL demo</a>.
 	</p>
 	<p class="storyTelling">
 		Wnile Stellar key pairs can be produced with a button, 
@@ -35,7 +36,8 @@ const template = `
 		each Data Entry in your account.  They remain your lumens, but they have to be there.  I’ll pin f
 		iles for up to a month, normally at a small fraction of a lumen.  You can explore ideas here with 
 		USD$1 in your account.  If you need to someone to fund an account for you, please send mail to 
-		brians@motia.com.
+		brian@motia.com.  The password for ECA0 (Example Client Account 0) is "demopw".  Please try to leave 
+		it functioning.  (i.e. please don't take the lumens.)
   </p> 
   <p class="storyTelling">
 	  Thanks for reading.  Enjoy the <a href="/demo.html" id="demoLink">demo</a>.

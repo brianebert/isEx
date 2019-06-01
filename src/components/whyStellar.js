@@ -11,7 +11,7 @@ const whyStellar = new Page([new Section([new Div(`
 		account agreement, <em>consensus</em>, and the record of accounts, the <em>blockchain</em>, have 
 		been operating over ten years, with <em>mining</em> incentives available to those who 
 		prove work done.  Bitcoin’s market cap today is over USD$150B.  The 
-		fact a ten year old public system can store that much value speaks for its 
+		fact a ten year old public system can store that much value demonstrates its 
 		integrity.
 	</p>
 	<p class="storyTelling">
@@ -48,7 +48,7 @@ const whyStellar = new Page([new Section([new Div(`
 		and trade coins on Stellar.  They trade under consensus on a distributed 
 		marketplace.  Complete charts of accounts can be built on Stellar, with consensus 
 		verified rules regarding what assets can be held in which accounts.  Trading partners 
-		can share books without need to audit.
+		can share books in elevated confidence of compliance.
 	</p>
 	<p class="storyTelling">
 		Stellar transactions can include many operations which execute atomically.  If one 
@@ -67,11 +67,11 @@ const whyStellar = new Page([new Section([new Div(`
 	<p class="storyTelling">
 		Stellar validation recently went down for a couple of hours.  Conclusions published claim 
 		the outage proof Stellar is centralized.  Intuitively it seems the larger one’s consensus 
-		group, the less likely the loss of servers will halt activity.  Uptake of Stellar, and growth 
+		group, the less likely the loss of a given number of servers will halt activity.  Uptake of Stellar, and growth 
 		of mutual trust among users may be needed to prevent this type of outage.  It may also be the 
 		case that the quorum of trustworthy users required to object to consensus should be smaller 
 		than the quorum required to agree.  I look forward to hearing 
-		more from Stellar.
+		more from Stellar, the experts in these matters.
 	</p>
 	<p class="storyTelling">
 		I hope you enjoy learning more about <a href="https://stellar.org" target="_blank">Stellar</a>.

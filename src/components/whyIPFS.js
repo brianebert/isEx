@@ -31,24 +31,22 @@ const whyIPFS = new Page([new Section([new Div(`
 		by anyone who knows its addresss.  You might rent space from someone to store data, but 
 		moving it is as simple as copying the hash from another computer running IPFS.  It seems 
 		intuitively more difficult to claim ownership of someone else's data when anyone can run 
-		the server the data resides on.  I look forward to seeing what the data greedy and their 
-		legal people do with IPFS.
+		the server the data resides on.  I look forward to watching how this space evolves legally.
 	</p>
 	<p class="storyTelling">
-		There are some complaints about IPFS performance, ironic for a file system that uses 
+		There are some complaints about IPFS performance, ironic for a file system that designed for  
 		torrents to move data.  When an IPFS node is asked for a file, it has no idea where the 
 		file is.  The request propagates over the network until someone who has it responds.  You 
 		can try this with my demo.  The link serves it out of motia.com, but you can use ipfs.io 
-		to see it as well.  If you load a file and add its address to a Stellar account using one 
+		to see it as well.  If you load a file and add its address in a Stellar account data entry using one 
 		host, then click the link to the file from the other browser, it should take some seconds 
 		before the new addition loads.  Once an IPFS node serves a file it keeps a copy, and the 
 		next access will not exhibit the initial delay.
 	</p>
 	<p class="storyTelling">
-		Ensuring data availability and performance is not complicated.  Anyone serving data from 
-		a database keeps replicas distributed.  Managing an IPFS service which proactively 
-		distributes new data among a group of IPFS repositories is a similar size task to setting 
-		up and maintaining database replicas.
+		Ensuring data availability and performance is not complicated.  Managing an IPFS service 
+		which proactively distributes new data among a group of IPFS repositories is a similar 
+		size task to setting up and maintaining database replicas.
 	</p>
 	<p class="storyTelling">
 		Please read more about <a href="http://ipfs.io" target="_blank">IPFS</a>.

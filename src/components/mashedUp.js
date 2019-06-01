@@ -5,28 +5,30 @@ import {Div} from '../common/Div.js';
 
 const template = `
 	<p class="storyTelling">
-		The demo page shows distributed document storage with indelible anti-tampering, and 
-		consensus verified voting.  Document 
-		encryption and signing are provided.  Encrypting a file automatically uploads a signature 
+		The demo page shows distributed  storage of self-authenticted documents.  Encryption and 
+		signing are provided.  Encrypting a file automatically uploads a signature 
 		of the plaintext.  Peer to peer messaging with privacy and authentication can be played 
-		with.  Keys are stored encrypted in IPFS, accessible by password<sup style="font-size:16px">1</sup>.
+		with, as can voting systems.  Keys are stored encrypted in IPFS, accessible by 
+		password<sup style="font-size:16px">1</sup>.
 	</p>
 	<p class="storyTelling">
 		This is not a wallet<sup style="font-size:16px">2</sup>.  You can’t send Stellar payments from here, or see your 
-		balance or any of that.  Things you upload can be seen in a browser from any IPFS gateway.  If 
+		balance.  There are other tools for that.  Things you upload can be seen in a browser from any IPFS gateway.  If 
 		you encrypt them, you can use the Stanford Javascript Crypto Library (SJCL) demo to decrypt 
 		and verify the result.  You can sign an upload.  If an IPFS address is detected in an account's 
-		data entries a link is displayed.  If the link points to a directory with signatures, the signature 
+		data entries, a link is displayed.  If the link points to a directory with signatures, the signature 
 		is verified<sup>3</sup>.  A link to a verified signature displays green, no signature blue, invalid signature 
-		a dull pink, and a file not found a brighter pink; visualize verifying data provenance while retreiving it.		 
+		a dull pink, and a file not found a brighter pink.  I did this to visualize verification of data provenance 
+		while retreiving it.  Many different signature chaining schemes can be explored.
 	</p>
 	<p class="storyTelling">
-		I took shortcuts in places and probably took some I don’t remember and made mistakes I’m 
+		I took shortcuts in places and probably took some I don’t remember and made surely mistakes I’m 
 		unaware.  I used the SJCL at its most basic: encrypt and decrypt with all the defaults.  The 
-		key you store here could be encrypted harder and perhaps someday will be.  For now, storing 
-		it where it can be recovered via any IPFS gateway is the point.  Although a keypair is 
+		key you store here could be encrypted harder and perhaps someday will be.  Storing 
+		it where it can be recovered via any IPFS gateway is the point.  Don't consider this a secure 
+		site.  Although a keypair is 
 		necessary to encrypt and sign, upload encryption is done with the key’s password, to make it 
-		easier to read decrypted text in the <a href="https://bitwiseshiftleft.github.io/sjcl/demo/" 
+		easier to decrypt text in the <a href="https://bitwiseshiftleft.github.io/sjcl/demo/" 
 		target="_blank">SJCL demo</a>.
 	</p>
 	<p class="storyTelling">
@@ -36,8 +38,8 @@ const template = `
 		each Data Entry in your account.  They remain your lumens, but they have to be there.  I’ll pin f
 		iles for up to a month, normally at a small fraction of a lumen.  You can explore ideas here with 
 		USD$1 in your account.  If you need to someone to fund an account for you, please send mail to 
-		brian@motia.com.  The password for ECA0 (Example Client Account 0) is "demopw".  Please try to leave 
-		it functioning.  (i.e. please don't take the lumens.)
+		<a href="mailto:brian@motia.com">brian@motia.com</a>.  The password for ECA0 (Example Client 
+		Account 0) is "demopw".  Please try to leave it functioning.  (i.e. please don't take the lumens.)
   </p> 
   <p class="storyTelling">
 	  Thanks for reading.  Enjoy the <a href="/demo.html" id="demoLink">demo</a>.

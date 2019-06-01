@@ -6,42 +6,36 @@ const welcome = new Page([new Section([new Div(`
     <div>
       <img src="./me.jpg" style="float:left;width:240px;height:250px;border-radius:20%;margin-left:10%;margin-right:5%;margin-bottom:5%;">
       <p class="storyTelling" style="margin-top:5%">
-				Thank you for coming.  I’m Brian.  My goal here is <em>to end apportionment of political 
-				representation on the basis of anything other than headcount</em>.  Where is here?  Good 
-				question.  You’re probably reading a copy of this site from motia.com, but you can do 
-				all the same things, store keys, verify credentials, and see pages change dynamically 
-				reading the site from ipfs.io, or any other ipfs gateway server.  You think of reading 
-				your web pages from a location, but these pages can be served from any location running 
-				the Inter-Planetary File System, ipfs.
+				I was told lies in a red brick schoolhouse from the ironically simple merit of telling 
+				the truth, to the diabolically fantastic Glomar Explorer.  Imagine, a bunch of grown 
+				men, serious men, with brightly colored do-dads on their jackets: “what we’re going to 
+				do, see, is we’re going to raise this sunken soviet submarine, and we’re going to run a 
+				disinformation campaign, targeting our own schoolchildren, to create a cover story.”  How 
+				many people had to agree this was a good idea in order to execute the plan?  While in 
+				middle school I returned to the schoolhouse with friends who hurled glass jars filled with 
+				paint.
 			</p>
 			<p class="storyTelling">
-				My political apportionment goal may take a while.  Between now and then I hope what 
-				I do here will be useful for people wanting to communicate authentically, know 
-				the provenance of news, automate organization, or reign sovereign over their 
-				data.  If we’re going to use ipfs for useful things, we’d at least better be able to 
-				encrypt our stuff since anyone can see it, from data in storage to personal messages 
-				left for our friends.  (You can always run a private network, 
-				but that’s not the ethos here.)  This site’s <em>demo</em> uses Stellar blockchain 
-				account keys like those used in crypto wallets to do its document encryption and 
-				signing.  Stellar accounts are also used for information storage, information pointer 
-				storage, and dynamic variable storage.
+				I had already joined “the public,” accomplishing my political ends only by my selection of 
+				others.  A thorough definition is part of “The Revolt of the Public…,” by Martin 
+				Gurri.  Originally published in 2014, it was updated last year with a confirming final 
+				chapter.  Where the original is strictly analytical, the new chapter predicts, among other 
+				things, growing nihilism, whose predations already erupt fatally and frequently.  Gurri’s 
+				hypothesis, that the explosion of information is delegitimizing authority, continues to 
+				hold.  We’re not slowing our information production.  Gurri characterizes the public’s 
+				response to authority’s loss of control over information by negation.
 			</p>
 			<p class="storyTelling">
-				Mashing the blockchain into document storage extends coverage of trust.  Specific ways 
-				that is done and also ways that is not done are mentioned later.  What is covered by 
-				blockchain trust, or consensus, will change, and methods of arriving at consensus will 
-				change.  The important concept is how consensus systems can extended to cover 
-				more than ledger pages of crypto accounts.  Stellar already does a lot, as you will see.  My demo 
-				has no size limits on trust coverage.  
-			</p>
-			<p class="storyTelling">
-				Abstracted trust appeared coincident with the 
-				banking crisis in 2008.  Millions upon millions had their homes foreclosed while the US 
-				diluted its money by 50% over five years, using the new cash to buy toxic assets for taxpayers 
-				from culpable bankers.  What timing!  Easier to understand than a credit default swap.  Anyone 
-				can copy the ledger.  All copies agree.  No investment of trust in humans.  What?  We won't 
-				need to invest trust in bankers and the federal government?  Oh forget it then; back to 
-				Facebook.
+				Nihilism is extreme negation.  It is dangerous and we, the public, will do better or we will 
+				suffer.  I hope to start a conversation about tools demonstrated here: primitives for systems 
+				of authenticated documentation, communication and transaction.  Means of trusting peers,  
+				written in code.  “Here” is a space whose architecture may challenge the basis of the internet 
+				economy.  The first instance of a trust network keeps accounts of ‘play” money.  Anyone can have 
+				a copy of the ledger.  There is no central authority, and users can trust that all the copies 
+				agree.   It appeared in 2008, just as the largest Ponzi scheme in history collapsed.  Government’s 
+				response was to buy assets nobody wanted from those culpable for  creating them, diluting dollars 
+				by 50% over 5 years to pay for it, then stand by while the culpable evicted millions.  Clearly 
+				we can do better.  I’d like to talk to people about tools that may help. 
 			</p>
     </div>
 	`)], "mitao")]);

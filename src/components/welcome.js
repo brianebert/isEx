@@ -10,7 +10,7 @@ const welcome = new Page([new Section([new Div(`
 				the truth, to the diabolically fantastic Glomar Explorer.  Imagine, a bunch of grown 
 				men, serious men, with brightly colored do-dads on their jackets: “what we’re going to 
 				do, see, is we’re going to raise this sunken soviet submarine, and we’re going to run a 
-				disinformation campaign, targeting our own schoolchildren, to create a cover story.”  How 
+				disinformation campaign targeting our own schoolchildren, to create a cover story.”  How 
 				many people had to agree this was a good idea in order to execute the plan?  While in 
 				middle school I returned to the schoolhouse with friends who hurled glass jars filled with 
 				paint.
@@ -35,7 +35,7 @@ const welcome = new Page([new Section([new Div(`
 				agree.   It appeared in 2008, just as the largest Ponzi scheme in history collapsed.  Government’s 
 				response was to buy assets nobody wanted from those culpable for  creating them, diluting dollars 
 				by 50% over 5 years to pay for it, then stand by while the culpable evicted millions.  Clearly 
-				we can do better.  I’d like to talk to people about tools that may help. 
+				we can do better.  I hope you'll enjoy playing here; we might produce a sandbox of solutions.
 			</p>
     </div>
 	`)], "mitao")]);

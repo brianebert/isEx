@@ -34,8 +34,9 @@ const welcome = new Page([new Section([new Div(`
 				a copy of the ledger.  There is no central authority, and users can trust that all the copies 
 				agree.   It appeared in 2008, just as the largest Ponzi scheme in history collapsed.  Government’s 
 				response was to buy assets nobody wanted from those culpable for  creating them, diluting dollars 
-				by 50% over 5 years to pay for it, then stand by while the culpable evicted millions.  Clearly 
-				we can do better.  I hope you'll enjoy playing here; we might produce a sandbox of solutions.
+				by 50% over 5 years to pay for it, then stand by while the culpable evicted millions from their 
+				homes.  Clearly we can do better.  I hope you'll enjoy playing here; we might produce a sandbox 
+				of solutions.
 			</p>
     </div>
 	`)], "mitao")]);

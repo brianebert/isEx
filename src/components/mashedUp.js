@@ -32,7 +32,7 @@ const template = `
 		target="_blank">SJCL demo</a>.
 	</p>
 	<p class="storyTelling">
-		Wnile Stellar key pairs can be produced with a button, 
+		While Stellar key pairs can be produced with a button, 
 		Stellar accounts need to be funded into existence.  If you’re already familiar with Stellar, 
 		use a petty cash account here.  You’ll need 0.5 XLM, the Stellar Lumen, minimum balance for for 
 		each Data Entry in your account.  They remain your lumens, but they have to be there.  I’ll pin f

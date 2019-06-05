@@ -3,7 +3,7 @@ import {whyStellar} from './components/whyStellar.js';
 import {whyIPFS} from './components/whyIPFS.js';
 import {mashedUp} from './components/mashedUp.js';
 import {rePirates} from './components/rePirates.js';
-import {demoPage} from './components/demoPage.js';
+//import {demoPage} from './components/demoPage.js';
 //import {TestTwo} from './components/TestTwo.js';
 //import {uploader} from './components/ipfsUpload.js'
 //import {kvPairList} from './components/kvPairs.js';

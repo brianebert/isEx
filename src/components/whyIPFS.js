@@ -23,7 +23,8 @@ const whyIPFS = new Page([new Section([new Div(`
 		and requests for a file propagate among swarms of computers.  Repositories with 
 		copies send file chunks in a torrent, promising delivery 
 		performance.  The system also promises to take advantage of locality of interest, 
-		minimizing hops to torrent over.
+		minimizing hops to torrent over.  How does one mount a dos attack when data can be 
+		served from anywher?
 	</p>
 	<p class="storyTelling">
 		The most intriguing benefit of IPFS is its context for a question: who owns data you put 

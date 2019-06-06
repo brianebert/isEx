@@ -4,6 +4,15 @@ import {Div} from '../common/Div.js';
 
 const whyStellar = new Page([new Section([new Div(`
 	<p class="storyTelling">
+		The first instance of a cryptographic trust network keeps accounts of ‘play” money.  It 
+		appeared in 2008, just as the largest Ponzi scheme in history collapsed.  Government’s 
+		response was to buy assets nobody wanted from those culpable for creating them, dilute dollars 
+		by 50% over 5 years to pay for it, then stand by while the culpable evicted millions from their 
+		homes, charging mortgageholders, now us, for their services.  Timing couldn't have been 
+		better for "play" money.  Anyone can have a copy of the ledger.  There is no central authority, yet users can 
+		<em>trust</em> that all the copies agree.   
+	</p>
+	<p class="storyTelling">
 		All those ledger copies are kept in agreement by offering competitive incentive to 
 		write a page of accounts indelibly.  If someone wants to go back in time and make a 
 		change they will need to do a computationally impossible amount of work to catch 
